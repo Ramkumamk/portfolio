@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Thumbnail</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #f0f0f0;
+        }
+        .thumbnail {
+            width: 1200px;
+            height: 630px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        .thumbnail::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+        .thumbnail::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 350px;
+            height: 350px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+        .content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+        }
+        .subtitle {
+            font-size: 32px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 20px;
+        }
+        .name {
+            font-size: 90px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        .tagline {
+            font-size: 28px;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 40px;
+            line-height: 1.4;
+        }
+        .skills {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        .skill-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: 600;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+        .footer {
+            position: absolute;
+            bottom: 30px;
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="thumbnail">
+        <div class="content">
+            <div class="subtitle">Banking Solutions Expert</div>
+            <div class="name">RAM KUMAR K</div>
+            <div class="tagline">Finacle Customization & Core Banking Solutions</div>
+            <div class="skills">
+                <div class="skill-badge">Finacle Customization</div>
+                <div class="skill-badge">Oracle & PL/SQL</div>
+                <div class="skill-badge">3+ Years Experience</div>
+            </div>
+        </div>
+        <div class="footer">github.com/ramkumamk • Finacle Specialist</div>
+    </div>
+</body>
+</html>
