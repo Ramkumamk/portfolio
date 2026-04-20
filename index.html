@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ram Kumar K - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+        nav {
+            background-color: rgba(0, 0, 0, 0.8);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        nav li {
+            display: inline;
+            margin: 0 1rem;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #007bff;
+        }
+        header {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem 2rem;
+            margin-top: 60px;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 3rem;
+            font-weight: 700;
+        }
+        header p {
+            margin: 0.5rem 0 0 0;
+            font-size: 1.5rem;
+            font-weight: 300;
+        }
+        section {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 2rem;
+        }
+        h2 {
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 0.5rem;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 0.5rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+        li::before {
+            content: '✓';
+            color: #667eea;
+            position: absolute;
+            left: 0;
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        .skill-item {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .skill-item:hover {
+            transform: translateY(-5px);
+        }
+        .project {
+            margin-bottom: 2rem;
+            border-left: 5px solid #667eea;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+        }
+        .project:hover {
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+            transform: translateY(-2px);
+        }
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .project h3 {
+            color: #333;
+            margin-bottom: 0;
+            font-size: 1.4rem;
+            flex: 1;
+            min-width: 250px;
+        }
+        .finacle-version {
+            display: inline-block;
+            background: linear-gradient(120deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.3rem 0.7rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+        .project h3 .finacle-highlight {
+            background: linear-gradient(120deg, #ffd700, #ffed4e);
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+        }
+        .project-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .project-badge.onsite {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        .project-badge.remote {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        .project p {
+            margin: 0.5rem 0;
+            color: #555;
+        }
+        .project ul {
+            margin: 1rem 0 0 0;
+        }
+        .project li {
+            color: #555;
+            font-size: 0.95rem;
+        }
+        .location-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        .location-item {
+            background: #e9ecef;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 500;
+        }
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+        .contact-item {
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+        }
+        .contact-item h3 {
+            margin-bottom: 0.5rem;
+        }
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .expertise-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.2);
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        .expertise-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+        .expertise-card h4 {
+            margin-top: 0;
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .expertise-card ul {
+            margin: 0;
+            padding: 0;
+        }
+        .expertise-card li {
+            padding-left: 1rem;
+            margin-bottom: 0.6rem;
+            color: #f0f0f0;
+        }
+        .expertise-card li::before {
+            color: #ffeb3b;
+            left: 0;
+        }
+        .finacle-highlight {
+            background: linear-gradient(120deg, #ffd700, #ffed4e);
+            color: #333;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+        footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#finacle">Finacle Expertise</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#locations">Worked Locations</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header id="about">
+        <h1>Ram Kumar K</h1>
+        <p>BE – Mechatronics Engineering | 3+ Years Finacle Experience</p>
+        <p>Specializing in Finacle Core Banking Solutions with expertise in customization, support, and development.</p>
+    </header>
+
+    <section id="finacle" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-left: 5px solid #667eea; color: white; box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);">
+        <h2 style="margin-top: 0; color: white; border-bottom-color: rgba(255, 255, 255, 0.3);">✨ Finacle Customization Expertise ✨</h2>
+        <p style="font-size: 1.15rem; color: #f0f0f0; margin-bottom: 2rem; font-weight: 500;">Specialized in Finacle Banking Solutions Customization with proven expertise across multiple banking institutions and modules.</p>
+        <div class="expertise-grid">
+            <div class="expertise-card">
+                <h4>⚙️ Menu Customization</h4>
+                <ul>
+                    <li>Develop new menus & menu options</li>
+                    <li>Customize product menus</li>
+                    <li>JSP and JavaScript customizations</li>
+                    <li>Business logic implementation</li>
+                </ul>
+            </div>
+            <div class="expertise-card">
+                <h4>📊 Report Development</h4>
+                <ul>
+                    <li>Custom report generation</li>
+                    <li>Bulk report processing</li>
+                    <li>Oracle procedure optimization</li>
+                </ul>
+            </div>
+            <div class="expertise-card">
+                <h4>🔧 Module Implementation</h4>
+                <ul>
+                    <li>Loan Module customization</li>
+                    <li>Product-specific implementations</li>
+                    <li>Custom table design</li>
+                    <li>Transaction processing logic</li>
+                </ul>
+            </div>
+            <div class="expertise-card">
+                <h4>🌐 API Development</h4>
+                <ul>
+                    <li>Custom API development</li>
+                    <li>Interface support (L2)</li>
+                    <li>CRM Product APIs</li>
+                    <li>Integration management</li>
+                </ul>
+            </div>
+            <div class="expertise-card">
+                <h4>📈 Version Migration</h4>
+                <ul>
+                    <li>Finacle version porting</li>
+                    <li>Upgrade compatibility</li>
+                    <li>Custom code migration</li>
+                    <li>Regression testing</li>
+                </ul>
+            </div>
+            <div class="expertise-card">
+                <h4>🚀 Deployment & Support</h4>
+                <ul>
+                    <li>UAT & L2 support</li>
+                    <li>Post-live stabilization</li>
+                    <li>DevOps knowledge</li>
+                    <li>Issue resolution & debugging</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-item">
+                <h3>Finacle Technical Skills</h3>
+                <ul>
+                    <li>Finacle menu & customization development</li>
+                    <li>Finacle Scripts & JSP coding</li>
+                    <li>Finacle Core troubleshooting</li>
+                    <li>L2/UAT support & production stabilization</li>
+                </ul>
+            </div>
+            <div class="skill-item">
+                <h3>Database & Backend</h3>
+                <ul>
+                    <li>Analysis, design and coding of front end and backend</li>
+                    <li>Oracle Packages, cursors, procedures</li>
+                    <li>PL/SQL, Oracle10g expertise</li>
+                    <li>Report generation & optimization</li>
+                    <li>Custom table design & management</li>
+                </ul>
+            </div>
+            <div class="skill-item">
+                <h3>Tools & Technologies</h3>
+                <ul>
+                    <li>ORACLE SQL, PL/SQL, JSP</li>
+                    <li>Toad, SQL Developer, Postman</li>
+                    <li>I Report 3.0 (Jasper Tool)</li>
+                    <li>JavaScript, Finacle Scripts</li>
+                    <li>Unix/Shell scripting</li>
+                </ul>
+            </div>
+            <div class="skill-item">
+                <h3>Soft Skills</h3>
+                <ul>
+                    <li>English, Tamil</li>
+                    <li>Leadership Qualities</li>
+                    <li>Interpersonal Relationships</li>
+                    <li>Team Management</li>
+                    <li>Communication</li>
+                    <li>Training</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2>Experience</h2>
+        <p style="font-size: 1.1rem; color: #666; margin-bottom: 2rem;">3+ Years of Experience in Finacle Banking Solutions with expertise in Customization, Support, and Development.</p>
+
+        <div class="project">
+            <div class="project-header">
+                <h3>Project #7: IndusInd Bank, Mumbai – Finacle 10.2.25 <span class="finacle-version">Customization</span></h3>
+                <span class="project-badge onsite">Onsite</span>
+            </div>
+            <ul>
+                <li>Developed new menus, performed debugging, bug fixing, and menu enhancements as per business team requirements.</li>
+                <li>Worked under the bank’s customization team as a vendor.</li>
+                <li>Direct interaction with business stakeholders for BRD clarifications.</li>
+                <li>Created test cases, performed end-to-end testing in the development environment.</li>
+                <li>Prepared documentation as per bank standards, including release notes, test cases, and test documents.</li>
+                <li>Gained knowledge in DevOps deployment.</li>
+            </ul>
+        </div>
+
+        <div class="project">
+            <div class="project-header">
+                <h3>Project #6: UCO Bank, Kolkata – Finacle 10.2.9 to 10.2.25 <span class="finacle-version">Porting & Customization</span></h3>
+                <span class="project-badge onsite">Onsite</span>
+            </div>
+            <ul>
+                <li>Ported custom menus and product-specific JSP files from Finacle 10.2.9 to 10.2.25 for UCO Hong Kong and Singapore overseas branches.</li>
+                <li>Supported UAT testing, live simulation, and post-live stabilization for 3 months, including EOD-BOD cycles.</li>
+                <li>Conducted complete testing for ported custom menus and customized product menus.</li>
+                <li>Designed, analyzed requirements, coded solutions, and performed debugging.</li>
+                <li>Debugged live issues and provided fixes, interacting with Infosys team for product issue support.</li>
+                <li>Prepared release notes, test cases, and test documents.</li>
+            </ul>
+        </div>
+
+        <div class="project">
+            <div class="project-header">
+                <h3>Project #5: IndusInd Bank, Mumbai – Finacle 10.2.25 <span class="finacle-version">Customization</span></h3>
+                <span class="project-badge remote">Remote</span>
+            </div>
+            <ul>
+                <li>Developed custom menus using JavaScript, JSP, Finacle Scripts, and SQL.</li>
+                <li>Applied front-end validations using JavaScript and gained basic knowledge of Finacle Integrator.</li>
+                <li>Created a new custom menu for multiple report generation in a single menu.</li>
+                <li>Modified logic in existing bulk report generation (changes applied in package procedures).</li>
+                <li>Analyzed issues, identified root causes, and implemented fixes.</li>
+                <li>Wrote code as per business requirements and performed unit testing.</li>
+                <li>Created test cases, executed testing, and prepared release notes, test documents, and related documentation.</li>
+            </ul>
+        </div>
+
+        <div class="project">
+            <div class="project-header">
+                <h3>Project #4: IBK Bank, Kuwait – Finacle 10.2.25 <span class="finacle-version">Interface Support</span></h3>
+                <span class="project-badge remote">Remote</span>
+            </div>
+            <ul>
+                <li>Provided L2 support for interfaces (API support for both product and custom APIs).</li>
+                <li>Developed new custom APIs as per business requirements.</li>
+                <li>Interacted with clients to understand requirements.</li>
+                <li>Handled infrastructure maintenance and Finacle service maintenance.</li>
+                <li>Supported CRM Product APIs for Retail & Corporate banking.</li>
+                <li>Created test cases, executed testing, and prepared release notes, test documents, and related documentation.</li>
+            </ul>
+        </div>
+
+        <div class="project">
+            <div class="project-header">
+                <h3>Project #3: IndusInd Bank, Chennai – Finacle 10.2.25 <span class="finacle-version">Customization</span></h3>
+                <span class="project-badge remote">Remote</span>
+            </div>
+            <ul>
+                <li>Participated in requirement analysis, design discussions, and functionality planning.</li>
+                <li>Developed a new Upload Menu Facility for payoff, hxfacr, laspay, hraco to support bulk processing.</li>
+                <li>Designed, analyzed, and coded both front-end and back-end components.</li>
+                <li>Created custom penal charges calculation logic for specific events (e.g., MIC15).</li>
+                <li>Created test cases, executed testing, and prepared release notes, test documents, and related documentation.</li>
+            </ul>
+        </div>
+
+        <div class="project">
+            <div class="project-header">
+                <h3>Project #2: Citizen Bank, Nepal – Finacle 10.2.18 <span class="finacle-version">Customization</span></h3>
+                <span class="project-badge remote">Remote</span>
+            </div>
+            <ul>
+                <li>Designed and developed product customization menu options using JSP, SQL, and Finacle Scripts.</li>
+                <li>Created COM files and Shell scripts in UNIX for automation.</li>
+                <li>Analyzed requirements, performed coding, and debugging based on business needs.</li>
+                <li>Wrote Preload Scripts to enhance existing applications as part of change requests.</li>
+                <li>Implemented custom menu functionalities using JavaScript, JSP, SQL, and Finacle Scripts.</li>
+                <li>Customized product menus by adding new functions and packages, validating business logic, storing results in the database, and ensuring proper display.</li>
+                <li>Created test cases, executed testing, and prepared release notes, test documents, and related documentation.</li>
+            </ul>
+        </div>
+
+        <div class="project">
+            <div class="project-header">
+                <h3>Project #1: Kumari Bank, Nepal – Finacle 10.2.25 <span class="finacle-version">Customization</span></h3>
+                <span class="project-badge remote">Remote</span>
+            </div>
+            <ul>
+                <li>Engaged in requirement analysis, design discussions, and functionality planning.</li>
+                <li>Developed new menus tailored to the bank’s requirements.</li>
+                <li>Analyzed requirements, coded solutions, and performed debugging.</li>
+                <li>Modified existing FI scripts to accommodate change requests.</li>
+                <li>Designed and implemented custom tables based on business specifications.</li>
+                <li>Worked on the Loan Module, enabling transaction splitting in the HLADSP product menu.</li>
+                <li>Developed a new Upload Menu Facility for bulk processing aligned with operational needs.</li>
+                <li>Created test cases, executed testing, and prepared release notes, test documents, and related documentation.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="locations">
+        <h2>Worked Locations</h2>
+        <div class="location-grid">
+            <div class="location-item">Mumbai, India (Onsite & Remote)</div>
+            <div class="location-item">Kolkata, India (Onsite)</div>
+            <div class="location-item">Chennai, India (Remote)</div>
+            <div class="location-item">Kuwait (Remote)</div>
+            <div class="location-item">Nepal (Remote)</div>
+            <div class="location-item">Hong Kong & Singapore (Remote Support)</div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <div class="contact-info">
+            <div class="contact-item">
+                <h3>Email</h3>
+                <p>kram447699@gmail.com</p>
+            </div>
+            <div class="contact-item">
+                <h3>Phone</h3>
+                <p>+91 9944628542</p>
+            </div>
+            <div class="contact-item">
+                <h3>LinkedIn</h3>
+                <p><a href="https://www.linkedin.com/in/ram-kumar-018755199?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank">LinkedIn Profile</a></p>
+            </div>
+            <div class="contact-item">
+                <h3>Location</h3>
+                <p>Tirupattur, Tamil Nadu , India</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Ram Kumar K. All rights reserved.</p>
+    </footer>
+</body>
+</html>
